@@ -48,7 +48,7 @@ class UpdateCourseRequestDict(TypedDict):
     estimatedTime: str | None
 
 class CreateCourseResponseDict(TypedDict):
-    ...
+    course: Course
 
 
 class CoursesClient(APIClient):
@@ -104,12 +104,12 @@ class CoursesClient(APIClient):
         return self.delete(f"/api/v1/courses/{course_id}")
 
     def create_course(self, request: CreateCourseRequestDict) -> CreateCourseResponseDict:
-        response = self.create_course_api(request=request)
+        response = self.create_course_api(request)
         return response.json()
 
 def get_courses_client(user: AuthenticationUserDict) -> CoursesClient:
     """
-
+    Клиент для работы с курсами
     :param user:
     :return:
     """
