@@ -1,13 +1,3 @@
-"""
-1. + Инициализировать паблик клиента
-2. + Подготовить данные для создание юзера
-3. + Создать юзера
-4. + Инициализировать данные для аутентификации юзера
-5. + Аутентифицировать юзера
-6. + Инициализация курс клиента
-7. + Подготовить данные для создания курса
-8. Создать курс
-"""
 from clients.authentication.authentication_client import LoginRequestDict
 from clients.courses.courses_client import get_courses_client, CreateCourseRequestDict
 from clients.files.files_client import CreateFileRequestDict, get_files_client
