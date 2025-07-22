@@ -1,4 +1,4 @@
-from clients.authentication.authentication_client import LoginRequestDict
+from clients.authentication.authentication_client import LoginRequestSchema
 from clients.courses.courses_client import get_courses_client, CreateCourseRequestDict
 from clients.files.files_client import CreateFileRequestDict, get_files_client
 from clients.users.public_users_client import get_public_users_client, CreateUserRequestDict
@@ -22,7 +22,7 @@ create_user_response = public_users_client.create_user(create_user_request)
 print(create_user_response)
 
 # Подготавливаем данные для аутентификации юзера
-authentication_user = LoginRequestDict(
+authentication_user = LoginRequestSchema(
     email=create_user_request['email'],
     password=create_user_request['password']
 )

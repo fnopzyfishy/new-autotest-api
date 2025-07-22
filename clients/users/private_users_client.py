@@ -1,5 +1,5 @@
 from clients.api_client import APIClient
-from clients.private_http_builder import AuthenticationUserDict, get_private_http_client
+from clients.private_http_builder import AuthenticationUserSchema, get_private_http_client
 from httpx import Response
 from typing import TypedDict
 
@@ -36,5 +36,5 @@ class PrivateUsersClient(APIClient):
         response = self.get_user_api(user_id)
         return response.json()
 
-def get_private_users_client(user: AuthenticationUserDict) -> PrivateUsersClient:
+def get_private_users_client(user: AuthenticationUserSchema) -> PrivateUsersClient:
     return PrivateUsersClient(client=get_private_http_client(user))
