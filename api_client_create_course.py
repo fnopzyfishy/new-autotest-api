@@ -1,31 +1,33 @@
 from clients.authentication.authentication_client import LoginRequestSchema
-from clients.courses.courses_client import get_courses_client, CreateCourseRequestDict
-from clients.files.files_client import CreateFileRequestDict, get_files_client
-from clients.users.public_users_client import get_public_users_client, CreateUserRequestDict
+from clients.courses.courses_client import get_courses_client
+from clients.courses.courses_schema import CreateCourseRequestSchema
+from clients.files.files_client import get_files_client
+from clients.files.files_schema import CreateFileRequestSchema
+from clients.users.public_users_client import get_public_users_client, CreateUserRequestSchema
 from tools.faker import get_random_email
 
 public_users_client = get_public_users_client()
 
-create_user_request = CreateUserRequestDict(
+create_user_request = CreateUserRequestSchema(
     email=get_random_email(),
     password="string",
-    lastName="string",
-    firstName="string",
-    middleName="string"
+    last_name="string",
+    first_name="string",
+    middle_name="string"
 )
 
 create_user_response = public_users_client.create_user(create_user_request)
 print(create_user_response)
 
 authentication_user = LoginRequestSchema(
-    email=create_user_request['email'],
-    password=create_user_request['password']
+    email=create_user_request.email,
+    password=create_user_request.password
 )
 
 files_client = get_files_client(authentication_user)
 courses_client = get_courses_client(authentication_user)
 
-create_file_request = CreateFileRequestDict(
+create_file_request = CreateFileRequestSchema(
     filename="image.png",
     directory="courses",
     upload_file="./testdata/files/image (1).png"
@@ -33,14 +35,14 @@ create_file_request = CreateFileRequestDict(
 create_file_response = files_client.create_file(create_file_request)
 print('Create file data:', create_file_response)
 
-create_course_request = CreateCourseRequestDict(
+create_course_request = CreateCourseRequestSchema(
     title="string",
-    maxScore=1,
-    minScore=0,
+    max_score=1,
+    min_score=0,
     description="string",
-    estimatedTime="1h",
-    previewFileId=create_file_response['file']['id'],
-    createdByUserId=create_user_response['user']['id']
+    estimated_time="1h",
+    preview_file_id=create_file_response.file.id,
+    created_by_user_id=create_user_response.user.id
 )
 
 create_course_response = courses_client.create_course(create_course_request)
