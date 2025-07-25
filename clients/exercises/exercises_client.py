@@ -9,7 +9,7 @@ class ExercisesClient(APIClient):
     Методы работы с блоком Exercises в API
     """
     def get_exercises_api(self, query: GetExercisesQuerySchema) -> Response:
-        return self.client.get(url='/api/v1/exercises', params=query)
+        return self.client.get(url='/api/v1/exercises', params=query.model_dump(by_alias=True))
 
     def get_exercise_api(self, exercise_id: str) -> Response:
         return self.client.get(url=f'/api/v1/exercises/{exercise_id}')
