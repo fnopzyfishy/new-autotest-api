@@ -1,12 +1,10 @@
 from clients.authentication.authentication_client import LoginRequestSchema
 from clients.courses.courses_client import get_courses_client
 from clients.courses.courses_schema import CreateCourseRequestSchema
-from clients.exercises.exercises_schema import CreateExerciseRequestSchema
 from clients.files.files_client import get_files_client
 from clients.files.files_schema import CreateFileRequestSchema
 from clients.users.public_users_client import get_public_users_client
 from clients.users.users_schema import CreateUserRequestSchema
-from clients.exercises.exercises_client import get_exercises_client
 
 # Инициализируем паблик клиента
 public_users_client = get_public_users_client()
