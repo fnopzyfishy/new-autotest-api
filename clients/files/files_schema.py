@@ -1,3 +1,5 @@
+from pydantic import Field
+from tools.faker import fake
 from pydantic import BaseModel
 
 class FileSchema(BaseModel):
@@ -14,8 +16,8 @@ class CreateFileRequestSchema(BaseModel):
     """
     Описание структуры запроса на создание файла.
     """
-    filename: str
-    directory: str
+    filename: str = Field(default_factory=lambda: f"{fake.uuid4()}.png")
+    directory: str = Field(default="test")
     upload_file: str
 
 
