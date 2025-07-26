@@ -50,7 +50,7 @@ class Fake:
         Генерирует случайную фамилию
         :return:
         """
-        return self.last_name()
+        return self.faker.last_name()
 
     def first_name(self) -> str:
         """
@@ -64,7 +64,7 @@ class Fake:
         Генерирует случайное отчество
         :return:
         """
-        return self.faker.middle_name()
+        return self.faker.first_name()
 
     def estimated_time(self) -> str:
         """
