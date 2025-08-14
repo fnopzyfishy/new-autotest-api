@@ -1,5 +1,4 @@
 from httpx import Client
-from typing import TypedDict
 from pydantic import BaseModel
 
 from clients.authentication.authentication_client import get_authentication_client

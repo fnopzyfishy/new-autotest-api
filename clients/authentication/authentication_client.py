@@ -1,5 +1,3 @@
-from multiprocessing.managers import Token
-
 from httpx import Response
 from clients.api_client import APIClient
 from clients.authentication.authentication_schema import LoginRequestSchema, RefreshRequestSchema, LoginResponseSchema

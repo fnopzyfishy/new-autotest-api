@@ -48,7 +48,7 @@ class CoursesClient(APIClient):
         """
         return self.patch(f"/api/v1/courses/{course_id}", json=request.model_dump(by_alias=True))
 
-    def delete_course_api(self, course_id: GetCoursesQuerySchema) -> Response:
+    def delete_course_api(self, course_id: str) -> Response:
         """
         Метод удаления курса.
 
