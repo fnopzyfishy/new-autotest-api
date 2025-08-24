@@ -30,7 +30,7 @@ courses_client = get_courses_client(authentication_user)
 exercises_client = get_exercises_client(authentication_user)
 
 # Подготавливаем данные для создания файла
-create_file_request = CreateFileRequestSchema(upload_file="./testdata/files/image (1).png")
+create_file_request = CreateFileRequestSchema(upload_file="testdata/files/image.png")
 
 #Создаем файл
 create_file_response = files_client.create_file(create_file_request)
